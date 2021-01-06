@@ -1,0 +1,14 @@
+{
+    "telemetry.machineId": "80cad4d1ee2ab7f9a8ca66e5c06ee6da8eb0397ba49967dd6e0aadf254ddca40",
+    "openedPathsList": {
+        "workspaces3": [
+            {
+                "id": "1d41307a4ee5f5a7f5781d81af9e2791",
+                "configURIPath": "file:///c%3A/Users/natha/Documents/meusProjetos/dsw/projeto-backend/src/.metadata/codemix.code-workspace"
+            }
+        ],
+        "files2": []
+    },
+    "theme": "vs-dark",
+    "themeBackground": "#1e1e1e"
+}
