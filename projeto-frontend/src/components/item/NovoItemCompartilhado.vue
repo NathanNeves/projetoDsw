@@ -1,8 +1,10 @@
 <template lang="html">
   <div class="form-items-compartilhados row" v-if="this.$root.credentials">
-    <div class="col-md-10 col-md-offset-1 text-left">
+    <div class="inner-form col-md-10 col-md-offset-1 text-left">
       <h2 class="form-title">Novo item compartilhado</h2>
-      <h6 class="form-subtitle">Entre com os dados do novo item compartilhado.</h6>
+      <h6 class="form-subtitle">
+        Entre com os dados do novo item compartilhado.
+      </h6>
 
       <div class="success" v-if="success">
         Os dados do item foram salvos.
@@ -11,14 +13,29 @@
       <form @submit.prevent="processForm">
         <div class="form-group">
           <label for="nome">Nome</label>
-          <input type="text" class="form-control" id="nome" placeholder="Entre o nome do item" v-model="item.nome">
-          <span class="error" v-if="error.nome">{{error.nome}}</span>
+          <input
+            type="text"
+            class="form-control"
+            id="nome"
+            placeholder="Entre o nome do item"
+            v-model="item.nome"
+          />
+          <span class="error" v-if="error.nome">{{ error.nome }}</span>
         </div>
 
         <div class="form-group">
           <label for="descricao">Descrição</label>
-          <textarea rows="3" cols="80" class="form-control" id="descricao" placeholder="Descreva o item" v-model="item.descricao"/>
-          <span class="error" v-if="error.descricao">{{error.descricao}}</span>
+          <textarea
+            rows="3"
+            cols="80"
+            class="form-control"
+            id="descricao"
+            placeholder="Descreva o item"
+            v-model="item.descricao"
+          />
+          <span class="error" v-if="error.descricao">{{
+            error.descricao
+          }}</span>
         </div>
 
         <div class="form-group">
@@ -28,7 +45,7 @@
             <option value="UNICO">Item único</option>
             <option value="MULTIPLO">Item múltiplo</option>
           </select>
-          <span class="error" v-if="error.tipo">{{error.tipo}}</span>
+          <span class="error" v-if="error.tipo">{{ error.tipo }}</span>
         </div>
 
         <button type="submit" class="btn btn-primary">Envia</button>
@@ -38,7 +55,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   data() {
@@ -50,39 +67,45 @@ export default {
       success: false,
 
       httpOptions: {
-          baseURL: this.$root.config.url,
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + this.$root.credentials.token
-          }
+        baseURL: this.$root.config.url,
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + this.$root.credentials.token,
+        },
       },
-    }
+    };
   },
 
   methods: {
     processForm: function() {
-      axios.put("/api/item/novo", this.item, this.httpOptions)
-        .then(response => {
+      axios
+        .put("/api/item/novo", this.item, this.httpOptions)
+        .then((response) => {
           this.success = true;
           this.error = {};
           setTimeout(this.goBackToList, 3000);
         })
-        .catch(error => {
+        .catch((error) => {
           this.error = error.response.data.errors;
         });
     },
 
     goBackToList: function() {
-      this.$router.replace('/item/list');
-    }
-  }
-}
+      this.$router.replace("/item/list");
+    },
+  },
+};
 </script>
 
 <style lang="css" scoped>
 div.form-items-compartilhados {
-  margin-top: 32px;
+  width: 100vw;
+  min-height: 100vh;
+  background: #d5d2ff;
+}
+.inner-form {
+  margin-top: 32px 20px;
 }
 div.success {
   border: 1px solid green;

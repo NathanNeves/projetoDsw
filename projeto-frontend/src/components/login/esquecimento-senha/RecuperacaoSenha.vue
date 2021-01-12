@@ -1,12 +1,12 @@
 <template lang="html">
-  <div class="reinicializacao-senha row" v-if="!this.$root.credentials">
-    <div class="col-md-4 col-md-offset-4 text-left">
+  <div class="reinicializacao-senha row">
+    <div class="inner-reinicializacao col-md-4 col-md-offset-4 text-left">
       <h2 class="form-title">Reinicialização de senha</h2>
       <h6 class="form-subtitle">Entre com a nova senha no formulário abaixo.</h6>
       
       <form @submit.prevent="processForm">
         <div class="form-group">
-          <label for="password">Nova senha</label>
+          <label for="password">Digite a nova senha</label>
           <input type="password" class="form-control" id="password" placeholder="Entre com uma senha" v-model="form.senha"></input>
           <span class="error" v-if="error.senha">{{error.senha}}</span>
         </div>
@@ -56,10 +56,38 @@
 </script>
 
 <style lang="css" scoped>
+
 div.reinicializacao-senha {
-  margin-top: 32px;
+  width: 100vw;
+  min-height: 100vh;
+  background: #d5d2ff;
 }
+
+.inner-reinicializacao{
+    margin: 32px 20px;
+}
+
 div.link-login {
   margin-top: 32px;
+}
+input[type="text"],
+input[type="password"] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  display: inline-block;
+  margin: 5px;
+  width: 70%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
 }
 </style>

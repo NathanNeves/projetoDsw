@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="criacao-conta row" v-if="!this.$root.credentials">
-    <div class="col-md-4 col-md-offset-4 text-left">
+    <div class="inner-criacao col-md-4 col-md-offset-4 text-left">
       <h2 class="form-title">Criar conta</h2>
       <h6 class="form-subtitle">Entre com os dados abaixo para se registrar no sistema.</h6>
       
@@ -73,10 +73,37 @@
 </script>
 
 <style lang="css" scoped>
+
 div.criacao-conta {
-  margin-top: 32px;
+  width: 100vw;
+  min-height: 100vh;
+  background: #d5d2ff;
 }
+
+div.inner-criacao {
+  margin: 32px 20px;
+}
+
 div.link-login {
-  margin-top: 32px;
+  margin: 8px;
+}
+
+input[type="text"],
+input[type="password"] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
 }
 </style>
