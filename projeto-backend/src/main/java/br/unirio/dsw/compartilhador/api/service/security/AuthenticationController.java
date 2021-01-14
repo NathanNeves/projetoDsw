@@ -124,4 +124,17 @@ class TokenForm
 		this.token = token;
 		this.administrador = administrador;
 	}
+
+	public String getNome(){
+		return this.nome;
+	}
+
+	public String getToken(){
+		return this.token;
+	}
+
+	public boolean administrador(){
+		return this.administrador;
+	}
+
 }

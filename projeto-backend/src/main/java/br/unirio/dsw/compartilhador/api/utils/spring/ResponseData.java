@@ -16,12 +16,17 @@ import lombok.Setter;
  */
 public class ResponseData
 {
-	private @Getter @Setter Object data;
+	private  Object data;
 	private HashMap<String, String> errors;
 
 	public ResponseData()
 	{
 		this.errors = new HashMap<String, String>();
+	}
+
+	public ResponseData(Object data){
+		this.errors = new HashMap<String, String>();
+		this.data = data;
 	}
 	
 	public String getTimestamp()
@@ -44,17 +49,23 @@ public class ResponseData
 	{
 		this.errors.put(field, message);
 	}
+
+	public void addData(Object data){
+		this.data = data;
+	}
 	
 	public HashMap<String, String> getErrors()
 	{
 		return errors;
 	}
 
+	public Object getData(){
+		return this.data;
+	} 
+
 	public boolean hasErrors()
 	{
 		return errors.size() > 0;
 	}
 
-	public void setData(Object data2) {
-	}
 }

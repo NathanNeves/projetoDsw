@@ -25,9 +25,8 @@ public class ControllerResponse
 	 */
 	public static ResponseEntity<ResponseData> success(Object data)
 	{
-		ResponseData responseData = new ResponseData();
-		responseData.setData(data);
-		return ResponseEntity.ok().body(responseData);
+		ResponseData responseData = new ResponseData(data);
+		return ResponseEntity.ok(responseData);
 	}
 
 	/**
