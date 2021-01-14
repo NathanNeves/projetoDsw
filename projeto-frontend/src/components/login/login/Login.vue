@@ -63,6 +63,7 @@ export default {
         .post(this.$root.config.url + "/auth", this.form)
         .then((response) => {
           this.$root.credentials = response.data.data;
+          sessionStorage.setItem("token", response.data.data);
           this.$router.replace("/");
           this.error = {};
         })

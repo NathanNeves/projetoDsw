@@ -69,9 +69,9 @@ export default {
       httpOptions: {
         baseURL: this.$root.config.url,
         headers: {
-          Accept: "application/json",
+          "Accept": "application/json",
           "Content-Type": "application/json",
-          Authorization: "Bearer " + this.$root.credentials.token,
+          "Authorization": "Bearer " + this.$root.credentials.token,
         },
       },
     };
@@ -87,7 +87,9 @@ export default {
           setTimeout(this.goBackToList, 3000);
         })
         .catch((error) => {
-          this.error = error.response.data.errors;
+          if (error != undefined) {
+            this.error = error.response.data.errors;
+          }
         });
     },
 

@@ -12,6 +12,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>
 
 	@Transactional(readOnly=true)
 	Usuario findByEmailAndSenha(String email, String senha);
-
 	
 }

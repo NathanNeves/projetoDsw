@@ -26,8 +26,15 @@
               >
             </li>
             <span class="border-right"></span>
-            <li class="nav-link">
+            <li class="nav-link" v-if="!this.$root.credentials">
               <router-link to="/login" class="nav-link">Login</router-link>
+            </li>
+            <li
+              class="nav-link"
+              v-else="this.$root.credentials"
+              @click="logout"
+            >
+              <router-link class="nav-link" to="/">Logout</router-link>
             </li>
             <span class="border-right"></span>
             <li class="nav-link">
@@ -85,13 +92,13 @@
             </li>
             <span class="border-right"></span>
             <li class="nav-link">
-              <router-link to="/item/delete" class="nav-link"
+              <router-link to="/item/new" class="nav-link"
                 >Novo item</router-link
               >
             </li>
             <span class="border-right"></span>
             <li class="nav-link">
-              <router-link to="/item/new" class="nav-link"
+              <router-link to="/item/delete" class="nav-link"
                 >Deletar item</router-link
               >
             </li>
@@ -137,9 +144,10 @@ li.nav-link:hover {
   margin-left: 18px;
 }
 .navbar {
-  height: 6vh;
+  display: inline;
 }
 li.nav-link {
+  height: 6vh;
   border-left: 1px solid #eee;
   border-right: 1px solid #eee;
 }

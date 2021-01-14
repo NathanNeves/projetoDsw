@@ -12,16 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import br.unirio.dsw.compartilhador.api.model.Compartilhamento;
 import br.unirio.dsw.compartilhador.api.model.ItemCompartilhado;
@@ -43,7 +34,7 @@ import lombok.Data;
  */
 @RestController
 @RequestMapping("/api/item")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.DELETE, RequestMethod.GET, RequestMethod.HEAD, RequestMethod.POST, RequestMethod.OPTIONS, RequestMethod.PUT})
 public class ItemCompartilhadoController
 {
 	private static final Logger log = LoggerFactory.getLogger(ItemCompartilhadoController.class);
