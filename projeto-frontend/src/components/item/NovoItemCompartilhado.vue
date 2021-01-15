@@ -69,9 +69,9 @@ export default {
       httpOptions: {
         baseURL: this.$root.config.url,
         headers: {
-          "Accept": "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json",
-          "Authorization": "Bearer " + this.$root.credentials.token,
+          Authorization: "Bearer " + this.$root.credentials.token,
         },
       },
     };
@@ -80,7 +80,7 @@ export default {
   methods: {
     processForm: function() {
       axios
-        .put("/api/item/novo", this.item, this.httpOptions)
+        .post("/api/item/novo", this.item, this.httpOptions)
         .then((response) => {
           this.success = true;
           this.error = {};
@@ -104,7 +104,7 @@ export default {
 div.form-items-compartilhados {
   width: 100vw;
   min-height: 100vh;
-  background: #d5d2ff;
+  background: #e5e3ff;
 }
 .inner-form {
   margin-top: 32px 20px;

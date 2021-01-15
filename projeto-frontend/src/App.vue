@@ -20,7 +20,7 @@
               <router-link to="/" class="nav-link">Home</router-link>
             </li>
             <span class="border-right"></span>
-            <li class="nav-link">
+            <li class="nav-link" v-if="this.$root.credentials">
               <router-link to="/item/list" class="nav-link"
                 >Compartilhamento</router-link
               >
@@ -29,78 +29,24 @@
             <li class="nav-link" v-if="!this.$root.credentials">
               <router-link to="/login" class="nav-link">Login</router-link>
             </li>
-            <li
-              class="nav-link"
-              v-else="this.$root.credentials"
-              @click="logout"
-            >
+            <li class="nav-link" v-else @click="logout">
               <router-link class="nav-link" to="/">Logout</router-link>
             </li>
             <span class="border-right"></span>
-            <li class="nav-link">
-              <router-link to="/login/new" class="nav-link">Create</router-link>
-            </li>
-            <span class="border-right"></span>
-            <span class="border-right"></span>
-            <li class="nav-link">
-              <router-link to="/login/account-created" class="nav-link">
-                Conta criada
-              </router-link>
-            </li>
-
-            <span class="border-right"></span>
-            <li class="nav-link">
-              <router-link to="/login/forgot" class="nav-link"
-                >Senha esquecida</router-link
+            <li class="nav-link" v-if="this.$root.credentials">
+              <router-link to="/login/change" class="nav-link"
+                >Trocar senha</router-link
               >
             </li>
             <span class="border-right"></span>
-            <li class="nav-link">
-              <router-link to="/login/token-sent" class="nav-link"
-                >Token enviado</router-link
-              >
-            </li>
-            <span class="border-right"></span>
-            <li class="nav-link">
+            <li class="nav-link" v-if="this.$root.credentials">
               <router-link to="/login/reset" class="nav-link"
                 >Resetar senha</router-link
               >
             </li>
             <span class="border-right"></span>
-            <li class="nav-link">
-              <router-link to="/login/reseted" class="nav-link"
-                >Senha resetada</router-link
-              >
-            </li>
-            <span class="border-right"></span>
-            <li class="nav-link">
-              <router-link to="/login/change" class="nav-link"
-                >Modificar senha</router-link
-              >
-            </li>
-            <span class="border-right"></span>
-            <li class="nav-link">
-              <router-link to="/login/changed" class="nav-link"
-                >Senha modificada</router-link
-              >
-            </li>
-            <span class="border-right"></span>
-            <li class="nav-link">
-              <router-link to="/item/update" class="nav-link"
-                >Atualizar itens</router-link
-              >
-            </li>
-            <span class="border-right"></span>
-            <li class="nav-link">
-              <router-link to="/item/new" class="nav-link"
-                >Novo item</router-link
-              >
-            </li>
-            <span class="border-right"></span>
-            <li class="nav-link">
-              <router-link to="/item/delete" class="nav-link"
-                >Deletar item</router-link
-              >
+            <li class="nav-link" v-if="!this.$root.credentials">
+              <router-link to="/login/new" class="nav-link">Create</router-link>
             </li>
           </ul>
         </div>
@@ -116,7 +62,9 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      componentKey: 0,
+    };
   },
 
   methods: {

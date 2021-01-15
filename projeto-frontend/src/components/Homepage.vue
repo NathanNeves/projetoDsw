@@ -123,7 +123,7 @@ export default {};
 }
 
 .main {
-  background: #d5d2ff;
+  background: #e5e3ff;
   background-color: linear-gradient(
     38deg,
     rgba(105, 99, 213, 1) 8%,

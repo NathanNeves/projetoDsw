@@ -56,7 +56,7 @@ export default {
         .then(response => {
           this.success = true;
           this.error = false;
-          setTimeout(this.goBackToList, 3000);
+          setTimeout(this.goBackToList, 2000);
         })
         .catch(error => {
           this.error = true;
@@ -75,7 +75,7 @@ export default {
 div.remove-items-compartilhados {
   width: 100vw;
   min-height: 100vh;
-  background: #d5d2ff;
+  background: #e5e3ff;
 }
 .inner-remove {
   margin: 32px 20px;

@@ -15,7 +15,7 @@
         </div>
         <div class="clear"></div>
       </div>
-
+      <input type="text" class="search-bar" />
       <table class="table table-striped" id="tbItens">
         <thead>
           <tr>
@@ -31,17 +31,24 @@
             <td>{{ item.nome }}</td>
             <td>{{ item.descricao }}</td>
             <td>{{ item.tipo }}</td>
-            <td>
-              <span
-                class="glyphicon glyphicon-pencil"
-                aria-hidden="true"
-                @click="edita(item)"
-              ></span>
-              <span
-                class="glyphicon glyphicon-remove"
-                aria-hidden="true"
-                @click="remove(item)"
-              ></span>
+            <td class="icons row">
+              <button class="btn col" @click="detalha(item)">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+              </button>
+              <button class="btn col">
+                <i
+                  class="fa fa-edit"
+                  aria-hidden="true"
+                  @click="edita(item)"
+                ></i>
+              </button>
+              <button class="btn col">
+                <i
+                  class="fa fa-trash-alt"
+                  aria-hidden="true"
+                  @click="remove(item)"
+                ></i>
+              </button>
             </td>
           </tr>
         </tbody>
@@ -108,6 +115,9 @@ export default {
       page: 1,
       totalPages: 1,
       items: [],
+      busca: "",
+      descricao: false,
+      nome: false,
 
       httpOptions: {
         baseURL: this.$root.config.url,
@@ -128,7 +138,7 @@ export default {
     processForm: function() {
       axios
         .get(
-          "/api/item/lista?sort=&per_page=10&page=" + this.page,
+          `/api/item/lista?page=${this.page}&per_page=10&texto=${this.busca}&descricao=${this.descricao}&nome=${this.nome}`,
           this.httpOptions
         )
         .then((response) => {
@@ -162,6 +172,13 @@ export default {
       });
     },
 
+    detalha: function(item) {
+      this.$router.push({
+        name: "item-details",
+        params: { item: item },
+      });
+    },
+
     remove: function(item) {
       this.$router.push({
         name: "item-delete",
@@ -176,16 +193,30 @@ export default {
 .lista-items-compartilhados {
   width: 100vw;
   min-height: 100vh;
-  background: #d5d2ff;
+  background: #e5e3ff;
 }
 
 .inner-lista {
   margin: 5px 20px;
 }
 
-th.commands {
-  width: 48px;
+button.btn.col {
+  display: inline;
+  width: 0px;
 }
+
+th.commands {
+  width: 60px;
+}
+
+.icons {
+  width: 110px;
+}
+
+td.icons.row {
+  padding: 0px;
+}
+
 div.page-item {
   color: #2973b7;
   text-decoration: none;
@@ -195,27 +226,34 @@ div.page-item {
   margin: 0px -1px 0px 0px;
   float: left;
 }
+
 div.page-item.first {
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
 }
+
 div.page-item.last {
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
 }
+
 div.page-item.disable {
   color: gray;
   cursor: auto;
 }
+
 div.page-item.current {
   background-color: lightgray;
 }
+
 div.clear {
   clear: both;
 }
+
 div.header {
   float: left;
 }
+
 div.new-button {
   float: right;
   text-align: right;

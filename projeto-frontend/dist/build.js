@@ -7906,7 +7906,7 @@ function initMixin (Vue) {
       vm._renderProxy = vm;
     }
     // expose real self
-    vm._self = vm;
+    vm._se= vm;
     initLifecycle(vm);
     initEvents(vm);
     initRender(vm);

@@ -82,7 +82,7 @@ export default {
         .then((response) => {
           this.success = true;
           this.error = {};
-          setTimeout(this.goBackToList, 3000);
+          setTimeout(this.goBackToList, 2000);
         })
         .catch((error) => {
           this.error = error.response.data.errors;
@@ -100,10 +100,10 @@ export default {
 div.form-items-compartilhados {
   width: 100vw;
   min-height: 100vh;
-  background: #d5d2ff;
+  background: #e5e3ff;
 }
 .inner-atualiza {
-  margin-top: 32px 20px;
+  margin: 32px 20px;
 }
 div.success {
   border: 1px solid green;
