@@ -12,7 +12,17 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import br.unirio.dsw.compartilhador.api.model.Compartilhamento;
 import br.unirio.dsw.compartilhador.api.model.ItemCompartilhado;
@@ -26,15 +36,18 @@ import br.unirio.dsw.compartilhador.api.utils.spring.ControllerResponse;
 import br.unirio.dsw.compartilhador.api.utils.spring.PageDTO;
 import br.unirio.dsw.compartilhador.api.utils.spring.ResponseData;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Controlador com as ações de itens compartilhados
  * 
  * @author User
  */
+
 @RestController
 @RequestMapping("/api/item")
-@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.DELETE, RequestMethod.GET, RequestMethod.HEAD, RequestMethod.POST, RequestMethod.OPTIONS, RequestMethod.PUT})
+@CrossOrigin(origins = "*")
 public class ItemCompartilhadoController
 {
 	private static final Logger log = LoggerFactory.getLogger(ItemCompartilhadoController.class);
@@ -48,7 +61,7 @@ public class ItemCompartilhadoController
 	/**
 	 * Ação que lista os itens compartilhados de um usuário
 	 */
-	@GetMapping(value = "/item/lista")
+	@GetMapping(value = "/lista")
 	public ResponseEntity<ResponseData> list(@RequestParam int page, @RequestParam int per_page,@RequestParam String texto,@RequestParam Boolean descricao,@RequestParam Boolean nome)
 	{
 		log.info("Listando items dono");
@@ -89,7 +102,7 @@ public class ItemCompartilhadoController
 	/**
 	 * Ação que cria um novo item compartilhado
 	 */
-	@PutMapping(value = "/item/novo")
+	@PostMapping(value = "/novo")
 	public ResponseEntity<ResponseData> novo(@RequestBody NovoItemCompartilhadoForm form, BindingResult result)
 	{
 		log.info("Criando um novo item compartilhado: {}", form.toString());
@@ -131,7 +144,7 @@ public class ItemCompartilhadoController
 	/**
 	 * Ação que atualiza os dados de um item compartilhado
 	 */
-	@PostMapping(value = "/item/atualiza")
+	@PostMapping(value = "/atualiza")
 	public ResponseEntity<ResponseData> atualiza(@RequestBody AtualizaItemCompartilhadoForm form, BindingResult result)
 	{
 		log.info("Atualizando um item compartilhado: {}", form.toString());
@@ -181,7 +194,7 @@ public class ItemCompartilhadoController
 	/**
 	 * Ação que remove um item compartilhado
 	 */
-	@DeleteMapping(value = "/item/{id}")
+	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<ResponseData> remove(@PathVariable("id") long id)
 	{
 		log.info("Removendo um item compartilhado: {}", id);
@@ -226,11 +239,11 @@ public class ItemCompartilhadoController
  */
 @Data class NovoItemCompartilhadoForm
 {
-	private String nome;
+	private @Getter @Setter String nome;
 	
-	private String descricao;
+	private @Getter @Setter String descricao;
 	
-	private String tipo;
+	private @Getter @Setter String tipo;
 
 
 	public String getNome(){
