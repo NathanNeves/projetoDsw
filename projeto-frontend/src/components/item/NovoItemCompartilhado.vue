@@ -84,7 +84,7 @@ export default {
         .then((response) => {
           this.success = true;
           this.error = {};
-          setTimeout(this.goBackToList, 3000);
+          setTimeout(this.goBackToList, 2000);
         })
         .catch((error) => {
           if (error != undefined) {

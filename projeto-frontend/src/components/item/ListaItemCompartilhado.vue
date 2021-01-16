@@ -15,7 +15,7 @@
         </div>
         <div class="clear"></div>
       </div>
-      <input type="text" class="search-bar" />
+      <input type="text" class="search-bar" @input="filtra" />
       <table class="table table-striped" id="tbItens">
         <thead>
           <tr>
@@ -27,7 +27,7 @@
         </thead>
 
         <tbody>
-          <tr v-for="item in items">
+          <tr v-for="item in subItems">
             <td>{{ item.nome }}</td>
             <td>{{ item.descricao }}</td>
             <td>{{ item.tipo }}</td>
@@ -115,9 +115,11 @@ export default {
       page: 1,
       totalPages: 1,
       items: [],
+      subItems: [],
       busca: "",
       descricao: false,
       nome: false,
+      filter: 0,
 
       httpOptions: {
         baseURL: this.$root.config.url,
@@ -146,6 +148,7 @@ export default {
           this.page = response.data.data.current_page;
           this.totalPages = response.data.data.last_page;
           this.error = {};
+          this.subItems = this.items;
         })
         .catch((error) => {
           this.error = error.response.data.errors;
@@ -179,6 +182,31 @@ export default {
       });
     },
 
+    filtra: function(event) {
+      this.busca = event.target.value;
+      if (this.busca === "") {
+        this.descricao = false;
+        this.nome = false;
+      } else {
+        this.nome = true;
+      }
+      axios
+        .get(
+          `/api/item/lista?page=${this.page}&per_page=10&texto=${this.busca}&descricao=${this.descricao}&nome=${this.nome}`,
+          this.httpOptions
+        )
+        .then((response) => {
+          this.items = response.data.data.data;
+          this.page = response.data.data.current_page;
+          this.totalPages = response.data.data.last_page;
+          this.error = {};
+          this.subItems = this.items;
+        })
+        .catch((error) => {
+          this.error = error.response.data.errors;
+        });
+    },
+
     remove: function(item) {
       this.$router.push({
         name: "item-delete",
@@ -206,7 +234,7 @@ button.btn.col {
 }
 
 th.commands {
-  width: 60px;
+  width: 30px;
 }
 
 .icons {
