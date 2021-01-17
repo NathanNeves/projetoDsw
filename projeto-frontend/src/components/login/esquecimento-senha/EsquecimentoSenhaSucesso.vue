@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="token-enviado row">
-    <div class="inner-token col-md-4 col-md-offset-4 text-left">
+    <div class="inner-token text-left">
       <h2 class="form-title">Token enviado!</h2>
       <h6 class="form-subtitle">
         Um token para recuperação de senha foi enviado para o seu e-mail. Clique
@@ -22,8 +22,10 @@ export default {};
 
 <style lang="css" scoped>
 div.token-enviado {
-  width: 100vw;
-  min-height: 100vh;
+  border: 1px solid #ababab;
+  height: 100%;
+  width: 70%;
+  margin: 32px 2%;
   background: #e5e3ff;
 }
 .inner-token {
@@ -31,5 +33,12 @@ div.token-enviado {
 }
 div.link-login {
   margin-top: 32px;
+}
+.form-title {
+  color: #6d22c7;
+}
+
+.form-subtitle {
+  color: #9467c9;
 }
 </style>

@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="reinicializacao-senha row">
-    <div class="inner-reinicializacao col-md-4 col-md-offset-4 text-left">
+    <div class="inner-reinicializacao col-md-4 col-md-offset-4 text-left border">
       <h2 class="form-title">Reinicialização de senha</h2>
       <h6 class="form-subtitle">Entre com a nova senha no formulário abaixo.</h6>
       
@@ -60,15 +60,25 @@
 div.reinicializacao-senha {
   width: 100vw;
   min-height: 100vh;
-  background:#e5e3ff;
 }
 
 .inner-reinicializacao{
-    margin: 32px 20px;
+  height: 100%;
+  margin: 32px 30%;
+  background: #e5e3ff;
+}
+
+.form-title, .form-group {
+  color: #6d22c7;
+}
+
+.form-subtitle{
+  color: #9467c9;
 }
 
 div.link-login {
   margin-top: 32px;
+  margin-bottom: 5px;
 }
 input[type="text"],
 input[type="password"] {

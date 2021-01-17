@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="remove-items-compartilhados row" v-if="this.$root.credentials">
-    <div class="inner-remove col-md-10 col-md-offset-1 text-left">
+    <div class="inner-remove col-md-10 col-md-offset-1 text-left border">
       <h2 class="form-title">Remoção de item compartilhado</h2>
       <h6 class="form-subtitle">Confirme a remoção do item compartilhado.</h6>
 
@@ -73,8 +73,8 @@ export default {
 
 <style lang="css" scoped>
 div.remove-items-compartilhados {
-  width: 100vw;
-  min-height: 100vh;
+  height: 100%;
+  margin: 32px 2%;
   background: #e5e3ff;
 }
 .inner-remove {
@@ -103,5 +103,11 @@ p.label {
 }
 p.text {
   margin-bottom: 32px;
+}
+.form-title {
+  color: #6d22c7;
+}
+.form-subtitle {
+  color: #9467c9;
 }
 </style>

@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="senha-reinicializada row">
-    <div class="inner-reinicializada col-md-4 col-md-offset-4 text-left">
+    <div class="inner-reinicializada text-left border">
       <h2 class="form-title">Senha trocada!</h2>
       <h6 class="form-subtitle">
         A sua senha foi trocada. Você pode utilizar esta nova senha para acessar
@@ -22,12 +22,15 @@ export default {};
 
 <style lang="css" scoped>
 div.senha-reinicializada {
-  width: 100vw;
-  min-height: 100vh;
+  height: 100%;
+  margin: 32px 30%;
   background: #e5e3ff;
 }
 .inner-reinicializada {
   margin: 32px 20px;
+}
+.form-subtitle {
+  text-align: center;
 }
 div.link-login {
   margin-top: 32px;

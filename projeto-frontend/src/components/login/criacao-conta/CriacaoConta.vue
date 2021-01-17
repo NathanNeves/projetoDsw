@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="criacao-conta row" v-if="!this.$root.credentials">
-    <div class="inner-criacao col-md-4 col-md-offset-4 text-left">
+    <div class="inner-criacao col-md-4 col-md-offset-4 text-left border">
       <h2 class="form-title">Criar conta</h2>
       <h6 class="form-subtitle">Entre com os dados abaixo para se registrar no sistema.</h6>
       
@@ -77,15 +77,24 @@
 div.criacao-conta {
   width: 100vw;
   min-height: 100vh;
-  background: #e5e3ff;
 }
 
 div.inner-criacao {
-  margin: 32px 20px;
+  height: 100%;
+  margin: 32px 30%;
+  background: #e5e3ff;
 }
 
 div.link-login {
   margin: 8px;
+}
+
+.form-title{
+  color: #6d22c7;
+}
+
+.form-subtitle{
+  color: #9467c9;
 }
 
 input[type="text"],

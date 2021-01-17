@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-light border-bottom">
-      <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid border-bottom">
         <router-link to="/" class="logo navbar-brand">Shared4U</router-link>
         <button
           class="navbar-toggler"
@@ -96,8 +96,7 @@ li.nav-link:hover {
 }
 li.nav-link {
   height: 6vh;
-  border-left: 1px solid #eee;
-  border-right: 1px solid #eee;
+  border: 1px solid #eee;
 }
 li.user-commands {
   color: black;

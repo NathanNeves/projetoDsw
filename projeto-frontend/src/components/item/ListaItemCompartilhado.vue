@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="lista-items-compartilhados row">
-    <div class="inner-lista col-md-10 col-md-offset-1 text-left">
+    <div class="inner-lista col-md-10 col-md-offset-1 text-left border">
       <div>
         <div class="header">
           <h2 class="form-title text">Itens Compartilhados</h2>
@@ -8,26 +8,31 @@
             Abaixo estão os seus itens compartilhados.
           </h6>
         </div>
-        <div class="new-button">
-          <button type="button" class="btn btn-primary" @click="novo">
-            Novo Item
-          </button>
-        </div>
         <div class="clear"></div>
       </div>
       <input type="text" class="search-bar" @input="filtra" />
-      <table class="table table-striped" id="tbItens">
+      <div class="text">
+        <input type="checkbox" @click="ativarNome" />
+        <label>Nome</label>
+        <input type="checkbox" @click="ativarDescricao" />
+        <label>Descrição</label>
+      </div>
+      <div class="new-button">
+        <button type="button" class="btn btn-success" @click="novo">
+          Novo Item
+        </button>
+      </div>
+      <table class="table" id="tbItens">
         <thead>
           <tr>
             <th>Nome</th>
             <th>Descrição</th>
             <th>Tipo</th>
-            <th class="commands"></th>
+            <th>Ações</th>
           </tr>
         </thead>
-
         <tbody>
-          <tr v-for="item in subItems">
+          <tr v-for="item in items">
             <td>{{ item.nome }}</td>
             <td>{{ item.descricao }}</td>
             <td>{{ item.tipo }}</td>
@@ -115,7 +120,6 @@ export default {
       page: 1,
       totalPages: 1,
       items: [],
-      subItems: [],
       busca: "",
       descricao: false,
       nome: false,
@@ -184,11 +188,6 @@ export default {
 
     filtra: function(event) {
       this.busca = event.target.value;
-      if (this.busca === "") {
-        this.nome = false;
-      } else {
-        this.nome = true;
-      }
       axios
         .get(
           `/api/item/lista?page=${this.page}&per_page=10&texto=${this.busca}&descricao=${this.descricao}&nome=${this.nome}`,
@@ -212,6 +211,44 @@ export default {
         params: { item: item },
       });
     },
+
+    ativarNome: function() {
+      this.nome = !this.nome;
+      axios
+        .get(
+          `/api/item/lista?page=${this.page}&per_page=10&texto=${this.busca}&descricao=${this.descricao}&nome=${this.nome}`,
+          this.httpOptions
+        )
+        .then((response) => {
+          this.items = response.data.data.data;
+          this.page = response.data.data.current_page;
+          this.totalPages = response.data.data.last_page;
+          this.error = {};
+          this.subItems = this.items;
+        })
+        .catch((error) => {
+          this.error = error.response.data.errors;
+        });
+    },
+
+    ativarDescricao: function() {
+      this.descricao = !this.descricao;
+      axios
+        .get(
+          `/api/item/lista?page=${this.page}&per_page=10&texto=${this.busca}&descricao=${this.descricao}&nome=${this.nome}`,
+          this.httpOptions
+        )
+        .then((response) => {
+          this.items = response.data.data.data;
+          this.page = response.data.data.current_page;
+          this.totalPages = response.data.data.last_page;
+          this.error = {};
+          this.subItems = this.items;
+        })
+        .catch((error) => {
+          this.error = error.response.data.errors;
+        });
+    },
   },
 };
 </script>
@@ -220,32 +257,33 @@ export default {
 .lista-items-compartilhados {
   width: 100vw;
   min-height: 100vh;
-  background: #e5e3ff;
 }
-
 .inner-lista {
-  margin: 5px 20px;
+  height: 100%;
+  width: 96%;
+  margin: 32px 2%;
 }
-
+h6.form-subtitle.text {
+  color: #9467c9;
+}
 button.btn.col {
   display: inline;
   width: 0px;
 }
-
-th.commands {
-  width: 30px;
+.text,
+h2,
+thead,
+.td {
+  color: #6d22c7;
 }
-
-.icons {
-  width: 110px;
-}
-
 td.icons.row {
   padding: 0px;
 }
-
+.th {
+  color: #9467c9;
+}
 div.page-item {
-  color: #2973b7;
+  color: #9467c9;
   text-decoration: none;
   cursor: pointer;
   padding: 10px;
@@ -265,7 +303,6 @@ div.page-item.last {
 }
 
 div.page-item.disable {
-  color: gray;
   cursor: auto;
 }
 
@@ -283,6 +320,5 @@ div.header {
 
 div.new-button {
   float: right;
-  text-align: right;
 }
 </style>

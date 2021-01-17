@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="login row" v-if="!$root.credentials">
-    <div class="inner-login col-md-4 col-md-offset-4 text-left">
+    <div class="inner-login col-md-4 col-md-offset-4 text-left border">
       <h2 class="form-title">Login</h2>
       <h6 class="form-subtitle">Entre com as suas credenciais para o login.</h6>
 
@@ -79,12 +79,12 @@ export default {
 div.login {
   width: 100vw;
   min-height: 100vh;
-  background: #e5e3ff;
 }
 
-.inner-login {
-  border: 5px #4d54d2;
-  margin: 32px 20px;
+div.inner-login {
+  height: 100%;
+  margin: 32px 30%;
+  background: #e5e3ff;
 }
 
 div.link-recuperar-senha {
@@ -113,5 +113,12 @@ input[type="password"] {
   transition: all 0.5s ease-in-out;
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
+}
+.form-title {
+  color: #6d22c7;
+}
+
+.form-subtitle {
+  color: #9467c9;
 }
 </style>

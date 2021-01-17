@@ -1,31 +1,28 @@
 <template lang="html">
   <div class="detalhes-items-compartilhado row">
-    <div class="inner-detalhes col-md-10 col-md-offset-1 text-left">
-      <div class="header col">
+    <div class="inner-detalhes col-md-10 col-md-offset-1 text-left border">
+      <div class="header col border">
         <div class="row">
           <h2 class="form-title text">Detalhes do item</h2>
         </div>
-        <div class="details row">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Nome</th>
-                <th>Descrição</th>
-                <th>Tipo</th>
-                <th>Data de início</th>
-                <th>Data de término</th>
-                <th>Usuário</th>
-                <th>Status</th>
-              </tr>
-            </thead>
+        <h5>Item: {{ item.nome }}</h5>
+        <div class="card text-center" style="width: 30rem;">
+          <table class="table">
             <tbody>
               <tr>
-                <td>{{ item.nome }}</td>
-                <td>{{ item.descricao }}</td>
-                <td>{{ item.tipo }}</td>
+                <th>Data de ínicio</th>
                 <td>Data vai aqui</td>
+              </tr>
+              <tr>
+                <th>Data de término</th>
                 <td>Data vai aqui</td>
+              </tr>
+              <tr>
+                <th>Usuário</th>
                 <td>Usuário vai aqui</td>
+              </tr>
+              <tr>
+                <th>Status</th>
                 <td>Status vai aqui</td>
               </tr>
             </tbody>
@@ -65,13 +62,22 @@ export default {
 </script>
 
 <style scoped>
+.card {
+  margin: auto;
+}
+.text {
+  color: #9467c9;
+}
 .detalhes-items-compartilhado {
-  width: 100vw;
-  min-height: 100vh;
+  margin: 32px 20%;
   background: #e5e3ff;
 }
 .inner-detalhes {
   margin: 5px 20px;
+}
+h5 {
+  text-align: center;
+  margin: 5px;
 }
 h2 {
   margin: 0;

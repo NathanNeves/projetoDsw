@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="troca-senha row" v-if="this.$root.credentials">
-    <div class="inner-troca col-md-4 col-md-offset-4 text-left">
+    <div class="inner-troca col-md-4 col-md-offset-4 text-left border">
       <h2 class="form-title">Troca de senha</h2>
       <h6 class="form-subtitle">Entre com a senha atual e a nova senha no formulário abaixo.</h6>
       
@@ -69,10 +69,19 @@
 div.troca-senha {
   width: 100vw;
   min-height: 100vh;
-  background-color: #e5e3ff;
 }
 
 .inner-troca {
-  margin: 32px 20px;
+  height: 100%;
+  margin: 32px 30%;
+  background: #e5e3ff;
+}
+
+.form-title, .form-group{
+  color: #6d22c7;
+}
+
+.form-subtitle{
+  color: #9467c9;
 }
 </style>
