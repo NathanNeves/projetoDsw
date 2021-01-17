@@ -184,8 +184,8 @@ export default {
 
     filtra: function(event) {
       this.busca = event.target.value;
+      console.log(this.busca);
       if (this.busca === "") {
-        this.descricao = false;
         this.nome = false;
       } else {
         this.nome = true;

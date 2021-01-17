@@ -64,14 +64,19 @@ public class ItemCompartilhadoController
 	@GetMapping(value = "/lista")
 	public ResponseEntity<ResponseData> list(@RequestParam int page, @RequestParam int per_page,@RequestParam String texto,@RequestParam Boolean descricao,@RequestParam Boolean nome)
 	{
-		log.info("Listando items dono");
 		Usuario usuario = JwtUser.isAuthenticated(usuarioRepositorio);
 		if(usuario == null)
 			return ControllerResponse.fail("nome", "Não há um usuário logado no sistema.");
 		
 		Pageable pageable = PageRequest.of(page-1, per_page);
 		Page<ItemCompartilhado> itens = null;
-		if(!(descricao && nome)){
+		log.info("------" + "\n");
+		log.info(!(descricao || nome) + "\n");
+		log.info((descricao && nome) + "\n");
+		log.info(descricao + "\n");
+		log.info(nome + "------");
+
+		if(!descricao && !nome){
 			itens = itemRepositorio.findByUsuarioId(usuario.getId(), pageable);
 		}
 		else if(descricao && nome){
@@ -82,6 +87,7 @@ public class ItemCompartilhadoController
 		}
 		else if(nome){
 			itens = itemRepositorio.findByUserIdAndBySearchTerm(usuario.getId(), texto, pageable);
+			log.info(texto);
 		}
 		PageDTO<ItemCompartilhadoDTO> result = new PageDTO<ItemCompartilhadoDTO>(itens.getTotalElements(), page, per_page);
 		
