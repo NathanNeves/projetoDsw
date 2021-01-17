@@ -80,7 +80,7 @@ export default {
   methods: {
     processForm: function() {
       axios
-        .put("/api/item/novo", this.item, this.httpOptions)
+        .post("/api/item/novo", this.item, this.httpOptions)
         .then((response) => {
           this.success = true;
           this.error = {};
