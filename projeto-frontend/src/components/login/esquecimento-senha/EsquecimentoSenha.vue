@@ -69,7 +69,7 @@ export default {
 div.recuperacao-senha {
   width: 100vw;
   min-height: 100vh;
-  background: #d5d2ff;
+  background: #e5e3ff;
 }
 .inner-recuperacao {
   margin: 32px 20px;

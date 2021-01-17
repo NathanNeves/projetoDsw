@@ -1,5 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import App from './App.vue'
 import Homepage from './components/Homepage.vue'
@@ -24,6 +28,12 @@ import ListaItemCompartilhado from './components/item/ListaItemCompartilhado.vue
 import NovoItemCompartilhado from './components/item/NovoItemCompartilhado.vue'
 import AtualizaItemCompartilhado from './components/item/AtualizaItemCompartilhado.vue'
 import RemoveItemCompartilhado from './components/item/RemoveItemCompartilhado.vue'
+import DetalhaItemCompartilhado from './components/item/DetalhaItemCompartilhado.vue'
+
+library.add(faUserSecret)
+library.add(faFontAwesome)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.use(Router)
 
@@ -102,6 +112,12 @@ const router = new Router({
     component: RemoveItemCompartilhado,
     props: true
   },
+  {
+    path: '/item/details',
+    name: 'item-details',
+    component: DetalhaItemCompartilhado,
+    props: true
+  }
 ]
 })
 

@@ -21,10 +21,12 @@ export default {};
 </script>
 
 <style lang="css" scoped>
+.html {
+  background: #e5e3ff;
+}
 div.senha-trocada {
   width: 100vw;
   min-height: 100vh;
-  background: #d5d2ff;
 }
 .inner-trocada {
   margin: 32px 20px;

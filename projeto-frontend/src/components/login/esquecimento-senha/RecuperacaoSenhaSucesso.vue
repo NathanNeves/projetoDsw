@@ -24,7 +24,7 @@ export default {};
 div.senha-reinicializada {
   width: 100vw;
   min-height: 100vh;
-  background: #d5d2ff;
+  background: #e5e3ff;
 }
 .inner-reinicializada {
   margin: 32px 20px;

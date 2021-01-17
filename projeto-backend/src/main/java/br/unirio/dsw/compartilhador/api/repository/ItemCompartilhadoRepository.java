@@ -31,13 +31,13 @@ public interface ItemCompartilhadoRepository extends JpaRepository<ItemCompartil
 	Page<ItemCompartilhado> findByUsuarioId(@Param("ownerId") Long ownerId, Pageable pageable);
 	
 	@Query(selectQuery+"ic.usuario.id = :ownerId AND ic.removido = 0 AND (ic.descricao LIKE '%:text%' OR ic.nome LIKE '%:text%')")
-	Page<ItemCompartilhado> findByUserIdAndBySearchTerm(@Param("ownerId") Long ownerId,@Param("text") String term, Pageable pageable);
+	Page<ItemCompartilhado> findByUserIdAndBySearchTerm(@Param("ownerId") Long ownerId,@Param("text") String text, Pageable pageable);
 
 	@Query(selectQuery+"ic.usuario.id = :ownerId AND ic.removido = 0 AND ic.descricao LIKE '%:text%'")
-	Page<ItemCompartilhado> findByUserIdAndByFileDescription(@Param("ownerId") Long ownerId,@Param("text") String term, Pageable pageable);
+	Page<ItemCompartilhado> findByUserIdAndByFileDescription(@Param("ownerId") Long ownerId,@Param("text") String text, Pageable pageable);
 
 	@Query(selectQuery+"ic.usuario.id = :ownerId AND ic.removido = 0 AND ic.nome LIKE '%:text%'")
-	Page<ItemCompartilhado> findByUserIdAndByFileName(@Param("ownerId") Long ownerId,@Param("text") String term, Pageable pageable);
+	Page<ItemCompartilhado> findByUserIdAndByFileName(@Param("ownerId") Long ownerId,@Param("text") String text, Pageable pageable);
 
 	@Query(selectQuery+"ic.usuario.id = :ownerId AND ic.removido = 0 AND ic.id = :idItemCompartilhado")
 	ItemCompartilhado findItemByUserIdAndByFileId(@Param("ownerId") Long ownerId,@Param("idItemCompartilhado") long idItemCompartilhado);
