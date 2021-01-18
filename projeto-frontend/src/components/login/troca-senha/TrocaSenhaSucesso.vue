@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="senha-trocada row">
-    <div class="inner-trocada col-md-4 col-md-offset-4 text-left">
+    <div class="inner-trocada border">
       <h2 class="form-title">Senha trocada!</h2>
       <h6 class="form-subtitle">
         A sua senha foi trocada. Você deve utilizar esta nova senha para acessar
@@ -21,17 +21,19 @@ export default {};
 </script>
 
 <style lang="css" scoped>
-.html {
-  background: #e5e3ff;
-}
 div.senha-trocada {
-  width: 100vw;
-  min-height: 100vh;
-}
-.inner-trocada {
-  margin: 32px 20px;
+  height: 100%;
+  margin: 32px 30%;
+  background: #e5e3ff;
 }
 div.link-home {
   margin-top: 32px;
+}
+.form-title {
+  color: #6d22c7;
+}
+.form-subtitle {
+  width: 100%;
+  color: #9467c9;
 }
 </style>

@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="conta-criada row">
-    <div class="inner-criada col-md-4 col-md-offset-4 text-left">
+    <div class="inner-criada text-left border">
       <h2 class="form-title">Conta registrada!</h2>
       <h6 class="form-subtitle">Faça o login para entrar no sistema.</h6>
 
@@ -19,8 +19,8 @@ export default {};
 
 <style lang="css" scoped>
 div.conta-criada {
-  width: 100vw;
-  min-height: 100vh;
+  height: 100%;
+  margin: 32px 30%;
   background: #e5e3ff;
 }
 
@@ -30,5 +30,13 @@ div.conta-criada {
 
 div.link-login {
   margin-top: 32px;
+}
+
+.form-title {
+  color: #6d22c7;
+}
+
+.form-subtitle {
+  color: #9467c9;
 }
 </style>

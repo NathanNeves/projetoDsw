@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="recuperacao-senha row">
-    <div class="inner-recuperacao col-md-4 col-md-offset-4 text-left">
+    <div class="inner-recuperacao col-md-4 col-md-offset-4 text-left border">
       <h2 class="form-title">Recuperar senha</h2>
       <h6 class="form-subtitle">
         Entre com o seu e-mail no formulário abaixo. Um link para troca de senha
@@ -69,10 +69,11 @@ export default {
 div.recuperacao-senha {
   width: 100vw;
   min-height: 100vh;
-  background: #e5e3ff;
 }
 .inner-recuperacao {
-  margin: 32px 20px;
+  height: 100%;
+  margin: 32px 30%;
+  background: #e5e3ff;
 }
 div.link-login {
   margin-top: 32px;
@@ -99,5 +100,12 @@ input[type="password"] {
   transition: all 0.5s ease-in-out;
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
+}
+.form-title {
+  color: #6d22c7;
+}
+
+.form-subtitle {
+  color: #9467c9;
 }
 </style>

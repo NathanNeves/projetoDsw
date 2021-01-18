@@ -1,6 +1,9 @@
 <template lang="html">
-  <div class="form-items-compartilhados row" v-if="this.$root.credentials">
-    <div class="inner-form col-md-10 col-md-offset-1 text-left">
+  <div
+    class="form-items-compartilhados row border"
+    v-if="this.$root.credentials"
+  >
+    <div class="inner-form col-md-10 col-md-offset-1 text-left border">
       <h2 class="form-title">Novo item compartilhado</h2>
       <h6 class="form-subtitle">
         Entre com os dados do novo item compartilhado.
@@ -102,8 +105,8 @@ export default {
 
 <style lang="css" scoped>
 div.form-items-compartilhados {
-  width: 100vw;
-  min-height: 100vh;
+  height: 100%;
+  margin: 32px 2%;
   background: #e5e3ff;
 }
 .inner-form {
@@ -114,5 +117,13 @@ div.success {
   background: lightgreen;
   padding: 8px;
   margin-bottom: 24px;
+}
+.form-title,
+.form-group {
+  color: #6d22c7;
+}
+
+.form-subtitle {
+  color: #9467c9;
 }
 </style>
