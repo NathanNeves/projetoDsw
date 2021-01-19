@@ -124,6 +124,7 @@ export default {
       descricao: false,
       nome: false,
       filter: 0,
+      perPage:10,
 
       httpOptions: {
         baseURL: this.$root.config.url,
@@ -144,12 +145,15 @@ export default {
     processForm: function() {
       axios
         .get(
-          `/api/item/lista?page=${this.page}&per_page=10&texto=${this.busca}&descricao=${this.descricao}&nome=${this.nome}`,
+          `/api/item/lista?page=${this.page}&per_page=${this.perPage}&texto=${this.busca}&descricao=${this.descricao}&nome=${this.nome}`,
           this.httpOptions
         )
         .then((response) => {
           this.items = response.data.data.data;
-          this.page = response.data.data.current_page;
+          if(response.data.data.current_page){
+            console.log('=============');
+            this.page = response.data.data.current_page;
+          }
           this.totalPages = response.data.data.last_page;
           this.error = {};
           this.subItems = this.items;
@@ -160,7 +164,7 @@ export default {
     },
 
     moveTo: function(page) {
-      if (page < 1) page = 1;
+      if (page <= 1) page = 1;
 
       if (page > this.totalPages) page = this.totalPages;
 
@@ -188,6 +192,7 @@ export default {
 
     filtra: function(event) {
       this.busca = event.target.value;
+      this.page = 1;
       axios
         .get(
           `/api/item/lista?page=${this.page}&per_page=10&texto=${this.busca}&descricao=${this.descricao}&nome=${this.nome}`,
@@ -195,7 +200,10 @@ export default {
         )
         .then((response) => {
           this.items = response.data.data.data;
-          this.page = response.data.data.current_page;
+          if(response.data.data.current_page){
+            console.log('=============');
+            this.page = response.data.data.current_page;
+          }
           this.totalPages = response.data.data.last_page;
           this.error = {};
           this.subItems = this.items;
@@ -214,6 +222,7 @@ export default {
 
     ativarNome: function() {
       this.nome = !this.nome;
+      this.page = 1;
       axios
         .get(
           `/api/item/lista?page=${this.page}&per_page=10&texto=${this.busca}&descricao=${this.descricao}&nome=${this.nome}`,
@@ -221,7 +230,10 @@ export default {
         )
         .then((response) => {
           this.items = response.data.data.data;
-          this.page = response.data.data.current_page;
+           if(response.data.data.current_page){
+            console.log('=============');
+            this.page = response.data.data.current_page;
+          }
           this.totalPages = response.data.data.last_page;
           this.error = {};
           this.subItems = this.items;
@@ -233,6 +245,7 @@ export default {
 
     ativarDescricao: function() {
       this.descricao = !this.descricao;
+      this.page = 1;
       axios
         .get(
           `/api/item/lista?page=${this.page}&per_page=10&texto=${this.busca}&descricao=${this.descricao}&nome=${this.nome}`,
@@ -240,7 +253,10 @@ export default {
         )
         .then((response) => {
           this.items = response.data.data.data;
-          this.page = response.data.data.current_page;
+          if(response.data.data.current_page){
+            console.log('=============');
+            this.page = response.data.data.current_page;
+          }
           this.totalPages = response.data.data.last_page;
           this.error = {};
           this.subItems = this.items;
@@ -255,13 +271,13 @@ export default {
 
 <style lang="css" scoped>
 .lista-items-compartilhados {
-  width: 100vw;
+  width: 99.6vw;
   min-height: 100vh;
 }
 .inner-lista {
   height: 100%;
   width: 96%;
-  margin: 32px 2%;
+  margin: 2% 2%;
 }
 h6.form-subtitle.text {
   color: #9467c9;

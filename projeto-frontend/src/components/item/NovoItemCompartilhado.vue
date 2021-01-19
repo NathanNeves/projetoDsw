@@ -15,7 +15,7 @@
 
       <form @submit.prevent="processForm">
         <div class="form-group">
-          <label for="nome">Nome</label>
+          <label for="nome">Nome:</label>
           <input
             type="text"
             class="form-control"
@@ -27,7 +27,7 @@
         </div>
 
         <div class="form-group">
-          <label for="descricao">Descrição</label>
+          <label for="descricao">Descrição:</label>
           <textarea
             rows="3"
             cols="80"
@@ -42,7 +42,7 @@
         </div>
 
         <div class="form-group">
-          <label for="tipo">Tipo</label>
+          <label for="tipo">Tipo:</label>
           <select class="form-control" id="tipo" v-model="item.tipo">
             <option value="">Selecione o tipo do item</option>
             <option value="UNICO">Item único</option>
@@ -51,7 +51,7 @@
           <span class="error" v-if="error.tipo">{{ error.tipo }}</span>
         </div>
 
-        <button type="submit" class="btn btn-primary">Envia</button>
+        <button type="submit" class="btn btn-primary">Enviar</button>
       </form>
     </div>
   </div>

@@ -46,7 +46,7 @@
           <span class="error" v-if="error.tipo">{{ error.tipo }}</span>
         </div>
 
-        <button type="submit" class="btn btn-primary">Envia</button>
+        <button type="submit" style="margin-top:10px" class="btn btn-primary">Enviar</button>
       </form>
     </div>
   </div>

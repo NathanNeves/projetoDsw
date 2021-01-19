@@ -67,7 +67,7 @@ export default {
 
 <style lang="css" scoped>
 div.recuperacao-senha {
-  width: 100vw;
+  width: 95vw;
   min-height: 100vh;
 }
 .inner-recuperacao {

@@ -25,4 +25,6 @@ public interface CompartilhamentoRepository extends JpaRepository<Compartilhamen
 	List<Compartilhamento> findByUsuarioIdAndAceito(Long usuarioId, boolean aceito);
 
 	Compartilhamento findByUsuarioIdAndId(Long usuarioId,Long id);
+
+	List<Compartilhamento> findByUsuarioIdAndAceitoAndRejeitado(Long usuarioId, boolean aceito,boolean rejeitado);
 }

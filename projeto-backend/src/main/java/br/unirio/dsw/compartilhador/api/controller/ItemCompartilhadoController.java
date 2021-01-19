@@ -339,4 +339,16 @@ public class ItemCompartilhadoController
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public String getNome(){
+		return this.nome;
+	}
+
+	public String getDescricao(){
+		return this.descricao;
+	}
+
+	public String getTipo(){
+		return this.tipo;
+	}
 }

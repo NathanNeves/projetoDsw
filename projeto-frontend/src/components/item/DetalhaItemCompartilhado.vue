@@ -11,11 +11,11 @@
             <tbody>
               <tr>
                 <th>Data de ínicio</th>
-                <td>Data vai aqui</td>
+                <td></td>
               </tr>
               <tr>
                 <th>Data de término</th>
-                <td>Data vai aqui</td>
+                <td></td>
               </tr>
               <tr>
                 <th>Usuário</th>

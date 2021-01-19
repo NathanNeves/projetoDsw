@@ -1,10 +1,10 @@
 <template lang="html">
-  <div class="login row" v-if="!$root.credentials">
-    <div class="inner-login col-md-4 col-md-offset-4 text-left border">
+  <div class="login d-flex align-items-center justify-content-center" v-if="!$root.credentials">
+    <div class="inner-login  text-left border">
       <h2 class="form-title">Login</h2>
       <h6 class="form-subtitle">Entre com as suas credenciais para o login.</h6>
 
-      <form @submit.prevent="processForm">
+      <form class="form" @submit.prevent="processForm">
         <div class="form-group">
           <label for="username">Login</label>
           <input
@@ -28,7 +28,7 @@
           />
         </div>
 
-        <button type="submit" class="btn btn-primary">Envia</button>
+        <button type="submit" class="btn btn-primary">Enviar</button>
       </form>
 
       <div class="link-recuperar-senha">
@@ -77,7 +77,7 @@ export default {
 
 <style lang="css" scoped>
 div.login {
-  width: 100vw;
+  width: 97vw;
   min-height: 100vh;
 }
 

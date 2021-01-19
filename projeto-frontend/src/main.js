@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+//import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import App from './App.vue'
 import Homepage from './components/Homepage.vue'
@@ -33,7 +33,7 @@ import DetalhaItemCompartilhado from './components/item/DetalhaItemCompartilhado
 library.add(faUserSecret)
 library.add(faFontAwesome)
 
-Vue.component('font-awesome-icon', FontAwesomeIcon)
+//Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.use(Router)
 
