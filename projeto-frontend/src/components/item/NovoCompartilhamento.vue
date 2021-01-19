@@ -1,24 +1,29 @@
 <template lang="html">
-  <div class="detalhes-items-compartilhado row">
+  <div class="detalhes-items-compartilhad d-flex align-items-center justify-content-center">
     <div class="inner-detalhes col-md-8 col-md-offset-1 text-left">
       <h5>Nome do item: {{ item.nome }}</h5>
-      <div class="input-box">
+      <div class="form-group">
         Compartilhar com:
-        <input type="email" @keyup.enter="update" />
+        <input v-model="this.email" class="form-control" type="email" />
       </div>
-      <div class="input-box">
+      <div class="form-group">
         Data de inicio:
-        <input type="email" @keyup.enter="update" />
+        <input v-model="this.dtInicio" class="form-control" type="date" />
       </div>
-      <div class="input-box">
+      <div class="form-group">
         Data de término:
-        <input type="email" @keyup.enter="update" />
+        <input v-model="this.dtFim" class="form-control" type="date" />
+      </div>
+      <div class="form-group">
+        <button v-on:click="sendCompartilhamento" class="btn btn-primary mt-3 mb-3">Salvar</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import moment from 'moment';
+import axios from 'axios';
 export default {
   props: ["item"],
   compartilhamento: {
@@ -38,7 +43,10 @@ export default {
         .get(`/api/item/${item.id}`, this.httpOptions)
         .then((response) => {
           this.item = response.data.data.data;
-          this.page = response.data.data.current_page;
+          this.page = 1;
+          if(response.data.data.current_page){
+            this.page = response.data.data.current_page;
+          }
           this.totalPages = response.data.data.last_page;
           this.error = {};
         })
@@ -47,12 +55,16 @@ export default {
         });
     },
 
-    getCompartilhamentos: function(event) {
-      compartilhamento.email = event.target.value;
+    sendCompartilhamento: function() {
       axios
-        .post(`/api/compartilhamento/novo`, this.httpOptions)
+        .post(`/api/compartilhamento/novo`,{
+          email:this.email,
+          idItem:this.item.id,
+          dtInicio:moment(this.dtInicio,'DD/MM/YYYY').format('X'),
+          dtFim:moment(this.dtFim,'DD/MM/YYYY').format('X')
+        }, this.httpOptions)
         .then((response) => {
-          this.compartilhamentos = response.data.data.data;
+              console.log('sucesso');
         })
         .catch((error) => {
           this.error = error.response.data.errors;
@@ -64,11 +76,13 @@ export default {
 
 <style scoped>
 .detalhes-items-compartilhado {
-  margin: 32px 30%;
-  background: #e5e3ff;
+  height: 100%;
+  width: 98%;
 }
 .inner-detalhes {
-  margin: 5px 20px;
+  width:70%;
+  background: #e5e3ff;
+  margin:200px;
 }
 .card {
   margin: auto;

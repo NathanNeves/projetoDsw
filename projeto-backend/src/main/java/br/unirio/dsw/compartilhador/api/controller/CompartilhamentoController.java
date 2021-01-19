@@ -63,6 +63,10 @@ public class CompartilhamentoController {
             return ControllerResponse.fail("email","Email Inválido");
         }
 
+        if(usuario.getEmail() == form.getEmail()){
+            return ControllerResponse.fail("Email","Não é possível compartilhar um item para você mesmo");
+        }
+
         if(form.getDtInicio().isBefore(LocalDate.now())){
             return ControllerResponse.fail("Data Inicio", "Data de Inicio não pode ser menor que ");
         }

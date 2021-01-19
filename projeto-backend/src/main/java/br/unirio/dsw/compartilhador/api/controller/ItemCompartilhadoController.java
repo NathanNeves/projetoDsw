@@ -154,15 +154,9 @@ public class ItemCompartilhadoController
 	public ResponseEntity<ResponseData> atualiza(@RequestBody AtualizaItemCompartilhadoForm form, BindingResult result)
 	{
 		log.info("Atualizando um item compartilhado: {}", form.toString());
-		String username = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-		if (username == null)
+		Usuario usuario = JwtUser.isAuthenticated(usuarioRepositorio);
+		if(usuario == null)
 			return ControllerResponse.fail("nome", "Não há um usuário logado no sistema.");
-
-        Usuario usuario = usuarioRepositorio.findByEmail(username);
-
-		if (usuario == null)
-			return ControllerResponse.fail("nome", "Não foi possível recuperar os dados do usuário a partir das credenciais.");
 
 		Optional<ItemCompartilhado> item = ValidateItemCompartilhadoService.checkSharedItem(itemRepositorio, form.getId(), usuario);
 		if(item == null)
@@ -306,6 +300,22 @@ public class ItemCompartilhadoController
 
 	public String getDescricao() {
 		return descricao;
+	}
+
+	public void setNome( String nome) {
+		this.nome = nome;
+	}
+
+	public void setId(long id ) {
+		this.id = id;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String setDescricao() {
+		this.descricao = descricao
 	}
 }
 
