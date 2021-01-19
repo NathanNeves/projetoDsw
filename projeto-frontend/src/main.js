@@ -30,6 +30,9 @@ import AtualizaItemCompartilhado from './components/item/AtualizaItemCompartilha
 import RemoveItemCompartilhado from './components/item/RemoveItemCompartilhado.vue'
 import DetalhaItemCompartilhado from './components/item/DetalhaItemCompartilhado.vue'
 
+/* Compartilhamentos */
+import NovoCompartilhamento from './components/item/NovoCompartilhamento.vue'
+
 library.add(faUserSecret)
 library.add(faFontAwesome)
 
@@ -116,6 +119,12 @@ const router = new Router({
     path: '/item/details',
     name: 'item-details',
     component: DetalhaItemCompartilhado,
+    props: true
+  },
+  {
+    path: '/item/share',
+    name: 'item-share',
+    component: NovoCompartilhamento,
     props: true
   }
 ]

@@ -42,6 +42,13 @@
               </button>
               <button class="btn col">
                 <i
+                  class="fa fa-share"
+                  aria-hidden="true"
+                  @click="compartilha(item)"
+                ></i>
+              </button>
+              <button class="btn col">
+                <i
                   class="fa fa-edit"
                   aria-hidden="true"
                   @click="edita(item)"
@@ -197,28 +204,7 @@ export default {
           this.error = error.response.data.errors;
         });
     },
-    /*
-    compartilhar: function() {
-      axios
-        .get(
-          `/api/item/lista?page=${this.page}&per_page=${this.perPage}&texto=${this.busca}&descricao=${this.descricao}&nome=${this.nome}`,
-          this.httpOptions
-        )
-        .then((response) => {
-          this.items = response.data.data.data;
-          if (response.data.data.current_page) {
-            console.log("=============");
-            this.page = response.data.data.current_page;
-          }
-          this.totalPages = response.data.data.last_page;
-          this.error = {};
-          this.subItems = this.items;
-        })
-        .catch((error) => {
-          this.error = error.response.data.errors;
-        });
-    },
-*/
+
     moveTo: function(page) {
       if (page <= 1) page = 1;
 
@@ -226,6 +212,13 @@ export default {
 
       this.page = page;
       this.processForm();
+    },
+
+    compartilha: function(item) {
+      this.$router.push({
+        name: "item-share",
+        params: { item: item },
+      });
     },
 
     novo: function() {

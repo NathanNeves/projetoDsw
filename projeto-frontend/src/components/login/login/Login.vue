@@ -1,5 +1,8 @@
 <template lang="html">
-  <div class="login d-flex align-items-center justify-content-center" v-if="!$root.credentials">
+  <div
+    class="login d-flex align-items-center justify-content-center"
+    v-if="!$root.credentials"
+  >
     <div class="inner-login  text-left border">
       <h2 class="form-title">Login</h2>
       <h6 class="form-subtitle">Entre com as suas credenciais para o login.</h6>
@@ -78,7 +81,6 @@ export default {
 <style lang="css" scoped>
 div.login {
   width: 97vw;
-  min-height: 100vh;
 }
 
 div.inner-login {

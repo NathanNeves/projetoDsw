@@ -25,6 +25,7 @@
     "file-loader": "^1.1.4",
     "glyphicons": "^0.2.0",
     "humps": "^2.0.1",
+    "moment": "^2.29.1",
     "vue": "^2.5.11",
     "vue-fontawesome": "0.0.2",
     "vue-loader": "^13.0.5",
