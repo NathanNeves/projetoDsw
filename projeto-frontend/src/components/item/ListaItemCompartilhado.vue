@@ -107,6 +107,28 @@
         </div>
         <div class="clear"></div>
       </div>
+      <div class="convites dropdown">
+        <button
+          class="btn btn-primary dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Convites
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li v-for="convite in convites">
+            <a
+              class="dropdown-item"
+              href="#"
+              @click:
+              role="button"
+              v-if="aceito == false && rejeitado == false"
+              >{{ convite }}</a
+            >
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -120,11 +142,12 @@ export default {
       page: 1,
       totalPages: 1,
       items: [],
+      convites: [],
       busca: "",
       descricao: false,
       nome: false,
       filter: 0,
-      perPage:10,
+      perPage: 10,
 
       httpOptions: {
         baseURL: this.$root.config.url,
@@ -139,6 +162,7 @@ export default {
 
   created: function() {
     this.processForm();
+    this.getConvites();
   },
 
   methods: {
@@ -150,8 +174,8 @@ export default {
         )
         .then((response) => {
           this.items = response.data.data.data;
-          if(response.data.data.current_page){
-            console.log('=============');
+          if (response.data.data.current_page) {
+            console.log("=============");
             this.page = response.data.data.current_page;
           }
           this.totalPages = response.data.data.last_page;
@@ -163,6 +187,38 @@ export default {
         });
     },
 
+    getConvites: function() {
+      axios
+        .get(`/api/compartilhamento/userAlert`, this.httpOptions)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          this.error = error.response.data.errors;
+        });
+    },
+    /*
+    compartilhar: function() {
+      axios
+        .get(
+          `/api/item/lista?page=${this.page}&per_page=${this.perPage}&texto=${this.busca}&descricao=${this.descricao}&nome=${this.nome}`,
+          this.httpOptions
+        )
+        .then((response) => {
+          this.items = response.data.data.data;
+          if (response.data.data.current_page) {
+            console.log("=============");
+            this.page = response.data.data.current_page;
+          }
+          this.totalPages = response.data.data.last_page;
+          this.error = {};
+          this.subItems = this.items;
+        })
+        .catch((error) => {
+          this.error = error.response.data.errors;
+        });
+    },
+*/
     moveTo: function(page) {
       if (page <= 1) page = 1;
 
@@ -200,8 +256,8 @@ export default {
         )
         .then((response) => {
           this.items = response.data.data.data;
-          if(response.data.data.current_page){
-            console.log('=============');
+          if (response.data.data.current_page) {
+            console.log("=============");
             this.page = response.data.data.current_page;
           }
           this.totalPages = response.data.data.last_page;
@@ -230,8 +286,8 @@ export default {
         )
         .then((response) => {
           this.items = response.data.data.data;
-           if(response.data.data.current_page){
-            console.log('=============');
+          if (response.data.data.current_page) {
+            console.log("=============");
             this.page = response.data.data.current_page;
           }
           this.totalPages = response.data.data.last_page;
@@ -253,8 +309,8 @@ export default {
         )
         .then((response) => {
           this.items = response.data.data.data;
-          if(response.data.data.current_page){
-            console.log('=============');
+          if (response.data.data.current_page) {
+            console.log("=============");
             this.page = response.data.data.current_page;
           }
           this.totalPages = response.data.data.last_page;
@@ -336,5 +392,8 @@ div.header {
 
 div.new-button {
   float: right;
+}
+.convites {
+  margin: 10px;
 }
 </style>

@@ -20,17 +20,11 @@
               <router-link to="/" class="nav-link">Home</router-link>
             </li>
             <span class="border-right"></span>
+            <span class="border-right"></span>
             <li class="nav-link" v-if="this.$root.credentials">
               <router-link to="/item/list" class="nav-link"
                 >Compartilhamento</router-link
               >
-            </li>
-            <span class="border-right"></span>
-            <li class="nav-link" v-if="!this.$root.credentials">
-              <router-link to="/login" class="nav-link">Login</router-link>
-            </li>
-            <li class="nav-link" v-else @click="logout">
-              <router-link class="nav-link" to="/">Logout</router-link>
             </li>
             <span class="border-right"></span>
             <li class="nav-link" v-if="this.$root.credentials">
@@ -39,10 +33,11 @@
               >
             </li>
             <span class="border-right"></span>
-            <li class="nav-link" v-if="this.$root.credentials">
-              <router-link to="/login/reset" class="nav-link"
-                >Resetar senha</router-link
-              >
+            <li class="nav-link" v-if="!this.$root.credentials">
+              <router-link to="/login" class="nav-link">Login</router-link>
+            </li>
+            <li class="nav-link" v-else @click="logout">
+              <router-link class="nav-link" to="/">Logout</router-link>
             </li>
             <span class="border-right"></span>
             <li class="nav-link" v-if="!this.$root.credentials">

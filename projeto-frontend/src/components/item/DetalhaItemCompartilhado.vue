@@ -7,26 +7,32 @@
         </div>
         <h5>Item: {{ item.nome }}</h5>
         <div class="card text-center" style="width: 30rem;">
-          <table class="table">
-            <tbody>
-              <tr>
-                <th>Data de ínicio</th>
-                <td></td>
-              </tr>
-              <tr>
-                <th>Data de término</th>
-                <td></td>
-              </tr>
-              <tr>
-                <th>Usuário</th>
-                <td>Usuário vai aqui</td>
-              </tr>
-              <tr>
-                <th>Status</th>
-                <td>Status vai aqui</td>
-              </tr>
-            </tbody>
-          </table>
+          <div
+            class="compartilhamentos"
+            v-for="compartilhamento in compartilhamentos"
+          >
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th>Data de ínicio</th>
+                  <td>{{ compartilhamento.inicio }}</td>
+                </tr>
+                <tr>
+                  <th>Data de término</th>
+                  <td>{{ compartilhamento.fim }}</td>
+                </tr>
+                <tr>
+                  <th>Usuário</th>
+                  <td>{{ compartilhamento.usuario }}</td>
+                </tr>
+                <tr>
+                  <th>Status</th>
+                  <td>{{ compartilhamento.status }}</td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -38,14 +44,15 @@ import axios from "axios";
 
 export default {
   props: ["item"],
+  compartilhamentos: [],
 
   created: function() {
-    this.processForm();
+    this.getItem();
   },
 
   methods: {
-    processForm: function() {
-      this.item = axios
+    getItem: function() {
+      axios
         .get(`/api/item/${item.id}`, this.httpOptions)
         .then((response) => {
           this.item = response.data.data.data;
@@ -57,6 +64,19 @@ export default {
           this.error = error.response.data.errors;
         });
     },
+
+/*
+    getCompartilhamentos: function() {
+      axios
+        .get(`/api/compartilhamento/lista?page=${item.page}&per_page=10`, this.httpOptions)
+        .then((response) => {
+          this.compartilhamentos = response.data.data.data;
+        })
+        .catch((error) => {
+          this.error = error.response.data.errors;
+        });
+    },
+    */
   },
 };
 </script>
