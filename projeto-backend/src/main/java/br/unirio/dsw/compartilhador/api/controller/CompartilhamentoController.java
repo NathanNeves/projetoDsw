@@ -3,6 +3,7 @@ package br.unirio.dsw.compartilhador.api.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,6 +40,7 @@ import lombok.Data;
 
 @RestController
 @RequestMapping("/api/compartilhamento")
+@CrossOrigin(origins = "*")
 public class CompartilhamentoController {
     private static final Logger log = LoggerFactory.getLogger(ItemCompartilhadoController.class);
 
@@ -136,6 +138,7 @@ public class CompartilhamentoController {
 
     @GetMapping("/userAlert")
     public ResponseEntity<ResponseData> userAlert(){
+        log.info("teste");
         Usuario usuario = JwtUser.isAuthenticated(usuarioRepositorio);
         if(usuario == null)
             return ControllerResponse.fail("nome", "Não há um usuário logado no sistema.");
@@ -151,7 +154,6 @@ public class CompartilhamentoController {
     private long idItem;
     private LocalDate dtInicio;
     private LocalDate dtFim;
-    private int IditemCompartilhado; 
 
 
     public String getEmail(){
@@ -186,10 +188,6 @@ public class CompartilhamentoController {
 
     public void setDtFim(LocalDate dtFim){
         this.dtFim = dtFim;
-    }
-
-    public void setItemCompartilhado(int IditemCompartilhado){
-        this.IditemCompartilhado = IditemCompartilhado;
     }
 
 }
