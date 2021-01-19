@@ -107,28 +107,7 @@
         </div>
         <div class="clear"></div>
       </div>
-      <div class="convites dropdown">
-        <button
-          class="btn btn-primary dropdown-toggle"
-          type="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Convites
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <li v-for="convite in convites">
-            <a
-              class="dropdown-item"
-              href="#"
-              @click:
-              role="button"
-              v-if="aceito == false && rejeitado == false"
-              >{{ convite }}</a
-            >
-          </li>
-        </ul>
-      </div>
+     
     </div>
   </div>
 </template>
@@ -154,7 +133,7 @@ export default {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: "Bearer " + this.$root.credentials.token,
+          Authorization: "Bearer " + JSON.parse(sessionStorage.getItem('token')).token,
         },
       },
     };

@@ -19,27 +19,41 @@
             <li class="nav-link">
               <router-link to="/" class="nav-link">Home</router-link>
             </li>
-            <span class="border-right"></span>
-            <span class="border-right"></span>
             <li class="nav-link" v-if="this.$root.credentials">
               <router-link to="/item/list" class="nav-link"
                 >Compartilhamento</router-link
               >
             </li>
-            <span class="border-right"></span>
             <li class="nav-link" v-if="this.$root.credentials">
               <router-link to="/login/change" class="nav-link"
                 >Trocar senha</router-link
               >
             </li>
-            <span class="border-right"></span>
+            <li class="nav-link" v-if="this.$root.credentials">
+                 <div class="convites dropdown">
+                    <i class="fas fa-bell mt-2" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                    <ul class="dropdown-menu dropstart" v-if="this.convites.length > 0" aria-labelledby="dropdownMenuButton">
+                      <li v-for="convite in this.convites" :key="convite.id">
+                        <a
+                          class="dropdown-item"
+                          href="#"
+                          @click:
+                          role="button"
+                          v-if="aceito == false && rejeitado == false"
+                          >{{ convite }}</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+            </li>
+
+
             <li class="nav-link" v-if="!this.$root.credentials">
               <router-link to="/login" class="nav-link">Login</router-link>
             </li>
             <li class="nav-link" v-else @click="logout">
               <router-link class="nav-link" to="/">Logout</router-link>
             </li>
-            <span class="border-right"></span>
             <li class="nav-link" v-if="!this.$root.credentials">
               <router-link to="/login/new" class="nav-link">Create</router-link>
             </li>
@@ -59,9 +73,10 @@ export default {
   data() {
     return {
       componentKey: 0,
+      convites:[]
     };
   },
-
+  
   methods: {
     logout: function() {
       this.$root.credentials = null;
@@ -88,10 +103,11 @@ li.nav-link:hover {
 }
 .navbar {
   display: inline;
+  
 }
 li.nav-link {
   height: 6vh;
-  border: 1px solid #eee;
+
 }
 li.user-commands {
   color: black;

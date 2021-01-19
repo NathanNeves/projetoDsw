@@ -5,7 +5,34 @@
         <div class="row">
           <h2 class="form-title text">Detalhes do item</h2>
         </div>
-        <h5>Item: {{ item.nome }}</h5>
+        <table class='table'>
+          <tbody>
+            <tr>
+              <td class='align-right'>
+                <h5>Item: </h5>
+              </td>
+              <td>
+                {{ item.nome }}
+              </td>
+            </tr>
+            <tr>
+              <td class='align-right'> 
+                  <h5>Descrição:</h5>
+              </td>
+              <td>
+                  {{ item.descricao }}
+              </td>
+            </tr>
+            <tr>
+              <td class='align-right'>
+                  <h5>Tipo do Item:</h5>
+              </td>
+              <td>
+                  {{ item.tipo }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <div class="card text-center" style="width: 30rem;">
           <div
             class="compartilhamentos"
@@ -64,8 +91,6 @@ export default {
           this.error = error.response.data.errors;
         });
     },
-
-/*
     getCompartilhamentos: function() {
       axios
         .get(`/api/compartilhamento/lista?page=${item.page}&per_page=10`, this.httpOptions)
@@ -76,7 +101,7 @@ export default {
           this.error = error.response.data.errors;
         });
     },
-    */
+    
   },
 };
 </script>

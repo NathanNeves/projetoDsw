@@ -128,6 +128,13 @@ new Vue({
       url: "http://localhost:8080"
     }
   },
+  
+  mounted(){
+    let json = sessionStorage.getItem('token');
+    if(json){
+        this.credentials = JSON.parse(json);
+    }
+  },
 
  el: '#app',
  render: h => h(App),

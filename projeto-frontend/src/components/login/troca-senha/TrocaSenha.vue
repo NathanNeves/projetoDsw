@@ -44,7 +44,7 @@
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + this.$root.credentials.token
+              'Authorization': 'Bearer ' + JSON.parse(sessionStorage.getItem('token')).token
             }
         },
       }
