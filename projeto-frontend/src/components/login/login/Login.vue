@@ -3,9 +3,11 @@
     class="login d-flex align-items-center justify-content-center"
     v-if="!$root.credentials"
   >
-    <div class="inner-login  text-left border">
+    <div class="inner-login text-center border">
       <h2 class="form-title">Login</h2>
-      <h6 class="form-subtitle">Entre com as suas credenciais para o login.</h6>
+      <h6 class="form-subtitle">
+        Entre com as suas credenciais para o login.
+      </h6>
 
       <form class="form" @submit.prevent="processForm">
         <div class="form-group">
@@ -85,12 +87,14 @@ div.login {
 
 div.inner-login {
   height: 100%;
+  width: 50%;
   margin: 32px 30%;
   background: #e5e3ff;
+  text-align: center;
 }
 
 div.link-recuperar-senha {
-  margin-top: 32px;
+  margin-top: 15px;
 }
 
 div.link-criar-conta {
@@ -122,5 +126,6 @@ input[type="password"] {
 
 .form-subtitle {
   color: #9467c9;
+  text-align: center;
 }
 </style>
