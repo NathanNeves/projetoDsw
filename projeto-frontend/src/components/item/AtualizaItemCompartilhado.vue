@@ -1,6 +1,6 @@
 <template lang="html">
-  <div class="form-items-compartilhados row" v-if="this.$root.credentials">
-    <div class="inner-atualiza col-md-10 col-md-offset-1 text-left border">
+  <div class="form-items-compartilhados  border" v-if="this.$root.credentials">
+    <div class="inner-atualiza text-left">
       <h2 class="form-title">Edição de item compartilhado</h2>
       <h6 class="form-subtitle">Entre com os dados do item compartilhado.</h6>
 
@@ -98,13 +98,14 @@ export default {
 
 <style lang="css" scoped>
 div.form-items-compartilhados {
-  width: 100vw;
-  min-height: 100vh;
+    width: 94.6vw;
+    min-height: 80vh;
+    margin-left:2.5%;
+    margin-top:2%;
 }
 .inner-atualiza {
   height: 100%;
   margin: 32px 2%;
-  background: #e5e3ff;
 }
 div.success {
   border: 1px solid green;

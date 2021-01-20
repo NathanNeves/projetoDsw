@@ -1,9 +1,9 @@
 <template lang="html">
   <div
-    class="form-items-compartilhados row border"
+    class="form-items-compartilhados border"
     v-if="this.$root.credentials"
   >
-    <div class="inner-form col-md-10 col-md-offset-1 text-left border">
+    <div class="inner-form col-md-10 col-md-offset-1 text-left m-4">
       <h2 class="form-title">Novo item compartilhado</h2>
       <h6 class="form-subtitle">
         Entre com os dados do novo item compartilhado.
@@ -51,7 +51,7 @@
           <span class="error" v-if="error.tipo">{{ error.tipo }}</span>
         </div>
 
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="submit" class="btn btn-primary mt-3">Enviar</button>
       </form>
     </div>
   </div>
@@ -105,9 +105,11 @@ export default {
 
 <style lang="css" scoped>
 div.form-items-compartilhados {
-  height: 100%;
-  margin: 32px 2%;
-  background: #e5e3ff;
+    width: 94.6vw;
+    min-height: 80vh;
+    margin-left:2.5%;
+    margin-top:2%;
+    background-color:white;
 }
 .inner-form {
   margin-top: 32px 20px;

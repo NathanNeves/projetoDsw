@@ -213,21 +213,23 @@ public class ItemCompartilhadoController
 		return ControllerResponse.success();
 	}
 
-	@GetMapping(value = "/item/{id}")
+	@GetMapping(value = "/{id}")
 	public ResponseEntity<ResponseData> view(@PathVariable("id") long idItemCompartilhado){
 		Usuario usuario = JwtUser.isAuthenticated(usuarioRepositorio);
-		Optional<ItemCompartilhado> item = ValidateItemCompartilhadoService.checkSharedItem(itemRepositorio, idItemCompartilhado, usuario);
+		ItemCompartilhado item = itemRepositorio.findByUserIdAndByItemId(usuario.getId(), idItemCompartilhado);
 		
 		if(usuario == null)
 			return ControllerResponse.fail("nome","Não há um usuário logado no sistema");
 		
 		if(item == null)
 			return ControllerResponse.fail("nome", "O item compartilhado não foi encontrado.");
-
-		ItemCompartilhado itemResposta = item.get(); 
-		//List<Compartilhamento> listaDeCompartilhamentos = itemResposta.getCompartilhamentos();
-		//itemResposta.setCompartilhamentos(listaDeCompartilhamentos);
-		return ControllerResponse.success(itemResposta);
+		
+		ItemCompartilhadoDTO dto = new ItemCompartilhadoDTO();
+		dto.setId(item.getId());
+		dto.setNome(item.getNome());
+		dto.setDescricao(item.getDescricao());
+		dto.setTipo(item.getTipo().toString());
+		return ControllerResponse.success(dto);
 		
 	}
 }
@@ -314,8 +316,8 @@ public class ItemCompartilhadoController
 		this.tipo = tipo;
 	}
 
-	public String setDescricao() {
-		this.descricao = descricao
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 }
 
@@ -360,5 +362,9 @@ public class ItemCompartilhadoController
 
 	public String getTipo(){
 		return this.tipo;
+	}
+
+	public long getId(){
+		return this.id;
 	}
 }

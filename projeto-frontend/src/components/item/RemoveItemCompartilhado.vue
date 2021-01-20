@@ -1,6 +1,6 @@
 <template lang="html">
-  <div class="remove-items-compartilhados row" v-if="this.$root.credentials">
-    <div class="inner-remove col-md-10 col-md-offset-1 text-left border">
+  <div class="remove-items-compartilhados row border" v-if="this.$root.credentials">
+    <div class="inner-remove col-md-10 col-md-offset-1 text-left">
       <h2 class="form-title">Remoção de item compartilhado</h2>
       <h6 class="form-subtitle">Confirme a remoção do item compartilhado.</h6>
 
@@ -14,13 +14,13 @@
 
       <div>
         <p class="label">Nome</label>
-        <p class="text" >{{item.nome}}</p>
+        <p class="text" >{{this.item.nome}}</p>
 
         <p class="label">Descrição</label>
-        <p class="text" >{{item.descricao}}</p>
+        <p class="text" >{{this.item.descricao}}</p>
 
         <p class="label">Tipo</label>
-        <p class="text" >{{item.tipo}}</p>
+        <p class="text" >{{this.item.tipo}}</p>
 
         <button type="submit" class="btn btn-danger" @click="remove">Remover o item</button>
       </div>
@@ -30,30 +30,34 @@
 
 <script>
 import axios from 'axios';
+//import func from '../../../vue-temp/vue-editor-bridge';
 
 export default {
-  props: ['item'],
+  props: ['idItem'],
 
   data() {
     return {
       error: false,
       success: false,
-
+      item:{},
       httpOptions: {
           baseURL: this.$root.config.url,
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + JSON.parse(sessionStorage.getItem('token')).token
-          },
-          withCredentials:true
+          }
       },
     }
   },
 
+  created:function(){
+     this.loadItem();
+  },
+
   methods: {
     remove: function() {
-      axios.delete("/api/item/" + this.item.id, this.httpOptions)
+      axios.delete("/api/item/" + this.idItem, this.httpOptions)
         .then(response => {
           this.success = true;
           this.error = false;
@@ -67,7 +71,18 @@ export default {
 
     goBackToList: function() {
       this.$router.replace('/item/list');
+    },
+
+    loadItem: async function(){
+      try{
+          let response = await axios.get('/api/item/'+this.idItem,this.httpOptions);
+          console.log('resultado:',response.data);
+          this.item = response.data.data;
+      }catch(e){
+            this.error = true;
+      }
     }
+
   }
 }
 </script>
@@ -76,7 +91,6 @@ export default {
 div.remove-items-compartilhados {
   height: 100%;
   margin: 32px 2%;
-  background: #e5e3ff;
 }
 .inner-remove {
   margin: 32px 20px;

@@ -1,6 +1,6 @@
 <template lang="html">
-  <div class="lista-items-compartilhados row">
-    <div class="inner-lista col-md-10 col-md-offset-1 text-left border">
+  <div class="lista-items-compartilhados border">
+    <div class="inner-lista col-md-10 col-md-offset-1 text-left ">
       <div>
         <div class="header">
           <h2 class="form-title text">Itens Compartilhados</h2>
@@ -10,7 +10,7 @@
         </div>
         <div class="clear"></div>
       </div>
-      <input type="text" class="search-bar" @input="filtra" />
+      <input type="text" class="form-control" @input="filtra" />
       <div class="text">
         <input type="checkbox" @click="ativarNome" />
         <label>Nome</label>
@@ -19,6 +19,7 @@
       </div>
       <div class="new-button">
         <button type="button" class="btn btn-success" @click="novo">
+          <i class="fas fa-plus"></i>
           Novo Item
         </button>
       </div>
@@ -161,7 +162,6 @@ export default {
         .then((response) => {
           this.items = response.data.data.data;
           if (response.data.data.current_page) {
-            console.log("=============");
             this.page = response.data.data.current_page;
           }
           this.totalPages = response.data.data.last_page;
@@ -243,10 +243,8 @@ export default {
 
     remove: function(item) {
       this.$router.push({
-        name: "item-delete",
-        params: { item: item },
-      });
-    },
+        path:`/item/delete/${item.id}`
+      })},
 
     ativarNome: function() {
       this.nome = !this.nome;
@@ -282,8 +280,7 @@ export default {
         .then((response) => {
           this.items = response.data.data.data;
           if (response.data.data.current_page) {
-            console.log("=============");
-            this.page = response.data.data.current_page;
+              this.page = response.data.data.current_page;
           }
           this.totalPages = response.data.data.last_page;
           this.error = {};
@@ -299,13 +296,21 @@ export default {
 
 <style lang="css" scoped>
 .lista-items-compartilhados {
-  width: 99.6vw;
-  min-height: 100vh;
+  width: 94.6vw;
+  min-height: 80vh;
+  margin-left:2.5%;
+  margin-top:2%;
+  background-color: white;
 }
+
+.form-control{
+    width:70%;
+}
+
 .inner-lista {
   height: 100%;
   width: 96%;
-  margin: 2% 2%;
+  margin: 2%;
 }
 h6.form-subtitle.text {
   color: #9467c9;

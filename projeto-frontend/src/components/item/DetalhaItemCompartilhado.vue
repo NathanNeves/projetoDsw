@@ -1,11 +1,11 @@
 <template lang="html">
   <div class="detalhes-items-compartilhado row">
-    <div class="inner-detalhes col-md-10 col-md-offset-1 text-left border">
-      <div class="header col border">
+    <div class="inner-detalhes text-left">
+      <div class="header col">
         <div class="row">
           <h2 class="form-title text">Detalhes do item</h2>
         </div>
-        <table class='table'>
+        <table class='table mt-5'>
           <tbody>
             <tr>
               <td class='align-right'>
@@ -33,7 +33,7 @@
             </tr>
           </tbody>
         </table>
-        <div class="card text-center" style="width: 30rem;">
+        <div class="card text-center" v-if="this.compartilhamentos > 0" style="width: 30rem;">
           <div
             class="compartilhamentos"
             v-for="compartilhamento in compartilhamentos"
@@ -115,7 +115,6 @@ export default {
 }
 .detalhes-items-compartilhado {
   margin: 32px 20%;
-  background: #e5e3ff;
 }
 .inner-detalhes {
   margin: 5px 20px;

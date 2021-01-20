@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container-fluid border-bottom">
+    <nav style="background-color:white" class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid menuSize border-bottom">
         <router-link to="/" class="logo navbar-brand">Shared4U</router-link>
         <button
           class="navbar-toggler"
@@ -101,14 +101,19 @@ li.nav-link:hover {
 .logo {
   margin-left: 18px;
 }
-.navbar {
-  display: inline;
-  
-}
-li.nav-link {
-  height: 6vh;
 
+body{
+   background-color: #ece7f3;
 }
+
+.menuSize{
+  height: 9vh !important;
+}
+
+.navbar{
+  padding-bottom: 0 !important;
+}
+
 li.user-commands {
   color: black;
   padding-top: 15px;

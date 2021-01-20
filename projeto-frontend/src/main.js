@@ -110,7 +110,7 @@ const router = new Router({
     component: NovoItemCompartilhado,
   },
   {
-    path: '/item/delete',
+    path: '/item/delete/:idItem',
     name: 'item-delete',
     component: RemoveItemCompartilhado,
     props: true
